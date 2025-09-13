@@ -43,13 +43,15 @@
 
 /* Zmienne CSS (Custom Properties) - Definicja palety kolorów */
 :root {
-  --color-primary: #e50914; /* Główny kolor (czerwień Netflixa) */
-  --color-primary-dark: #b2070f; /* Ciemniejszy odcień głównego koloru */
+  --color-primary: #1e40af; /* Główny kolor (niebieski) */
+  --color-primary-dark: #1e3a8a; /* Ciemniejszy odcień głównego koloru */
   --color-surface: #141414; /* Kolor tła powierzchni (ciemny) */
   --color-surface-dark: #000000; /* Bardzo ciemny kolor powierzchni */
-  --color-surface-light: #232323; /* Jaśniejszy odcień koloru powierzchni */
+  --color-surface-light: #1a1a2e; /* Jaśniejszy odcień koloru powierzchni z niebieskim akcentem */
   --color-text: #ffffff; /* Główny kolor tekstu (biały) */
   --color-text-secondary: #a3a3a3; /* Drugorzędny kolor tekstu (szary) */
+  --color-accent: #3b82f6; /* Kolor akcentu (jasny niebieski) */
+  --color-accent-hover: #60a5fa; /* Kolor akcentu przy hover */
 }
 
 /* Global Styles - Podstawowe style dla całego dokumentu */
@@ -62,7 +64,8 @@
 body {
   font-family: -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--color-surface);
+  background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 100vh;
   color: var(--color-text);
   line-height: 1.5;
   font-size: 16px; /* Minimum font size for accessibility */
@@ -295,9 +298,11 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-  background-color: #1a1a1a; /* Nowy, jaśniejszy odcień szarości dla trybu ciemnego */
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   padding: 1rem;
   border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 /* Movie Card - Stylizacja pojedynczej karty filmu */
@@ -534,9 +539,10 @@ textarea:focus {
 }
 
 .category-search:focus {
-  border-color: #4A90E2;
-  outline: 2px solid #4A90E2;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  box-shadow: 0 0 15px rgba(30, 64, 175, 0.2);
 }
 
 .category-tags {
@@ -568,7 +574,7 @@ textarea:focus {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-text);
-  outline: 2px solid #FFD700;
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
@@ -577,9 +583,11 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
-  background-color: #1a1a1a; /* Nowy, jaśniejszy odcień szarości dla trybu ciemnego */
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   padding: 1rem;
   border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 /* Empty Watchlist - Stylizacja komunikatu o pustej liście do obejrzenia */
@@ -634,10 +642,13 @@ textarea:focus {
 .auth-box {
   width: 100%;
   max-width: 400px;
-  background-color: var(--color-surface-light); /* Zmieniono na jaśniejszy kolor dla trybu ciemnego */
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(15px);
   border-radius: 1rem;
   padding: 2rem;
   z-index: 10; /* Zwiększono z-index, aby był na wierzchu */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .auth-header {
@@ -689,18 +700,20 @@ textarea:focus {
 .input-icon input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 3rem;
-  background-color: #2a2a2a; /* Jaśniejsze tło dla inputów w trybie ciemnym */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtelniejsza ramka */
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.5rem;
   color: var(--color-text);
   font-size: 16px; /* Prevent zoom on iOS */
   min-height: 44px; /* Minimum touch target */
+  backdrop-filter: blur(5px);
 }
 
 .input-icon input:focus {
-  border-color: #4A90E2;
-  outline: 2px solid #4A90E2;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
 }
 
 .auth-submit {
@@ -996,7 +1009,8 @@ textarea:focus {
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: #111111; /* Stałe tło */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
   backdrop-filter: none; /* Usunięto rozmycie */
 }
 
@@ -1142,7 +1156,8 @@ textarea:focus {
 
 /* Footer - Stylizacja stopki */
 .footer {
-  background-color: rgba(0, 0, 0, 0.95);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.9) 100%);
+  border-top: 1px solid rgba(59, 130, 246, 0.3);
   color: var(--color-text);
   padding: 4rem 2rem 2rem;
 }
@@ -2073,11 +2088,13 @@ margin-bottom: 1rem;
 .help-container {
   width: 100%;
   max-width: 500px;
-  background-color: var(--color-surface-light);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.9) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(15px);
   border-radius: 1rem;
   padding: 2rem;
   z-index: 10;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 .help-header {
@@ -2169,8 +2186,8 @@ margin-bottom: 1rem;
 .help-form textarea {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 3rem;
-  background-color: #2a2a2a;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.5rem;
   color: var(--color-text);
   font-size: 16px;
@@ -2179,12 +2196,14 @@ margin-bottom: 1rem;
   font-family: inherit;
   line-height: 1.5;
   transition: border-color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(5px);
 }
 
 .help-form textarea:focus {
-  border-color: #4A90E2;
-  outline: 2px solid #4A90E2;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+  box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
 }
 
 .help-form textarea::placeholder {
